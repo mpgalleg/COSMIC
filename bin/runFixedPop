@@ -24,6 +24,7 @@ from time import sleep
 import string
 import os.path
 import json
+import os
 
 import numpy as np
 import scipy.special as ss
@@ -83,6 +84,10 @@ def parse_commandline():
 
     args = parser.parse_args()
 
+    if not os.path.isfile(args.inifile):
+        raise parser.error('inifile does not exist '
+                           'check the path for errors.')
+
     if len(args.final_kstar1) > 2 or len(args.final_kstar2) > 2:
         raise parser.error('final kstar1 and final kstar2 '
                            'must be either a single value or '
@@ -99,6 +104,10 @@ def parse_commandline():
     if args.initial_samp not in ['independent', 'multidim']:
         raise parser.error('Initial sample must either be '
                            'independent or multidim')
+
+    if args.galaxy_component not in ['ThinDisk', 'Bulge', 'ThickDisk', 'DeltaBurst']:
+        raise parser.error('galaxy component must be one '
+                           'ThinDisk, Bulge, ThickDisk, or DeltaBurst.')
 
     return args
 
