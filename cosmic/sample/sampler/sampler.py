@@ -29,7 +29,7 @@ from astropy.table import Table
 _SAMPLERS = {}
 
 __author__ = 'Duncan Macleod <duncan.macleod@ligo.org>'
-
+# hello Christopher
 
 def register_sampler(data_format, data_class, function, force=False,
                      usage=None):
